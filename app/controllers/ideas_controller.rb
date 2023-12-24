@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  before_action :authenticate_user!, only: %i[ new edit destroy]
   before_action :set_idea, only: %i[ show edit update destroy ]
 
   # GET /ideas or /ideas.json
@@ -56,7 +57,7 @@ class IdeasController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
